@@ -10,7 +10,7 @@ async function uploadFile() {
         auth: token,
     });
 
-    const repo = 'geraw/Formal-Methods-Seminar';
+    const repo = 'geraw/SwimFix';
     const path = 'file2.txt';
     const content = await file.text();
 
