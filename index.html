@@ -1,33 +1,23 @@
-import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload Form</title>
+</head>
+
+<body>
+    <form>
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="button" value="Upload" onclick="window.uploadFile()">
+    </form>
+    <script src="https://unpkg.com/@github/file-attachment-element@3.1.0/dist/index.umd.js"></script>
 
 
-async function uploadFile() {
-    const fileInput = document.getElementById('fileToUpload');
-    const file = fileInput.files[0];
+    <script type="module" src="upload.js">
+    </script>
+    <!-- <script src="upload.js"></script> -->
 
-    const token = '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';
-    const octokit = new Octokit({
-        auth: token,
-    });
+</body>
 
-    const repo = 'geraw/Formal-Methods-Seminar';
-    const path = 'file2.txt';
-    const content = await file.text();
-
-    // Print ocktokit to see what methods are available
-    console.log(octokit.rest);
-
-
-    await octokit.rest.repos.createOrUpdateFileContents({
-        owner: repo.split('/')[0],
-        repo: repo.split('/')[1],
-        path: path,
-        message: 'Add new file',
-        content: btoa(content),
-        committer: {
-            name: 'geraw (via GitHub API)',
-            email: 'gera.weiss@gmail.com',
-        },
-    });
-
-    alert('File uploaded successfully!');
+</html>
